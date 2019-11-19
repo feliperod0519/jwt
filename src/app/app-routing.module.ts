@@ -5,11 +5,13 @@ import { LoginComponent } from './login/login.component';
 import { CommonModule } from '@angular/common';
 import { LogoutComponent } from './logout/logout.component';
 
-const routes: Routes = [
+const routes: Routes = [  
+                          
                           { path: 'home', component: HomeComponent },
                           { path: 'login', component: LoginComponent },
                           { path: 'logout/:id', component: LogoutComponent },
-                          { path: '', redirectTo:'/home', pathMatch:'full' }
+                          { path: '', redirectTo:'/home', pathMatch:'full' }  
+                                               
                        ];
 
 @NgModule({
