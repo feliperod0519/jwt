@@ -12,6 +12,8 @@ import { HomeComponent } from './home/home.component';
 import { LogoutComponent } from './logout/logout.component';
 
 import { InMemoryUsersService } from '../app/inmemoryusers.service';
+//import { httpInterceptorProvider } from '../app/http-interceptor.service';
+import { ConfigService } from '../app/config.service';
 
 
 @NgModule({
@@ -37,38 +39,9 @@ import { InMemoryUsersService } from '../app/inmemoryusers.service';
                         }
                       })*/
   ],
-  providers: [InMemoryUsersService],
+  providers: [InMemoryUsersService, 
+              //httpInterceptorProvider, 
+              ConfigService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-/*
-
-@NgModule({
-  imports: [ 
-    BrowserModule, 
-    FormsModule, 
-    HttpClientModule,
-    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
-    // and returns simulated server responses.
-    // Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    )  
-  ],
-  declarations: [ AppComponent ],
-  providers:    [ InMemoryDataService ],
-  bootstrap:    [ AppComponent ]
-})
-export class AppModule { }
-
-
-JwtModule.forRoot({
-      config: {
-        tokenGetter: function  tokenGetter() {
-             return     localStorage.getItem('access_token');},
-        whitelistedDomains: ['localhost:3000'],
-        blacklistedRoutes: ['http://localhost:3000/auth/login']
-      }
-
-*/

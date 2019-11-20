@@ -12,11 +12,14 @@ export class User {
 
 export class LoginUser extends User
 {
-    password: string; 
+    password: string;
+
     
     constructor(id:number, name: string, email:string, password:string)
     { 
         super(id,name,email);
         this.password = password;
     }
+    
+    
 }
