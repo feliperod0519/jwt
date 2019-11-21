@@ -12,8 +12,11 @@ import { HomeComponent } from './home/home.component';
 import { LogoutComponent } from './logout/logout.component';
 
 import { InMemoryUsersService } from '../app/inmemoryusers.service';
-//import { httpInterceptorProvider } from '../app/http-interceptor.service';
+import { providerIndex } from '../app/interceptors/providerIndex';
+import { LoaderService } from '../app/interceptors/loader.service';
+
 import { ConfigService } from '../app/config.service';
+import { SandboxComponent } from './sandbox/sandbox.component';
 
 
 @NgModule({
@@ -21,14 +24,28 @@ import { ConfigService } from '../app/config.service';
     AppComponent,
     LoginComponent,
     HomeComponent,
-    LogoutComponent
+    LogoutComponent,
+    SandboxComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    InMemoryWebApiModule.forRoot(InMemoryUsersService)
-    /*,
+    InMemoryWebApiModule.forRoot(InMemoryUsersService)   
+  ],
+  providers: [
+              InMemoryUsersService, 
+              providerIndex, 
+              ConfigService,
+              LoaderService
+             ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+
+/*
+,
     JwtModule.forRoot({
                         config: {
                           tokenGetter: ()=>{
@@ -37,11 +54,5 @@ import { ConfigService } from '../app/config.service';
                           whitelistedDomains: ['localhost:4200'],
                           blacklistedRoutes: []
                         }
-                      })*/
-  ],
-  providers: [InMemoryUsersService, 
-              //httpInterceptorProvider, 
-              ConfigService],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
+                      })
+*/
